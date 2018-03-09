@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="70942175-aa8a-417a-bc9e-8ebf772cbe9a" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/course/index.html" afterPath="$PROJECT_DIR$/course/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/course/js/main.js" afterPath="$PROJECT_DIR$/course/js/main.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,8 +19,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/course/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="19" column="12" lean-forward="false" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="12" />
+            <state relative-caret-position="460">
+              <caret line="26" column="33" lean-forward="true" selection-start-line="26" selection-start-column="33" selection-end-line="26" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -27,8 +30,11 @@
         <entry file="file://$PROJECT_DIR$/course/js/config.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="120">
-              <caret line="6" column="12" lean-forward="true" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
-              <folding />
+              <caret line="6" column="12" lean-forward="false" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
+              <folding>
+                <marker date="1520388373130" expanded="true" signature="66:304" ph="{...}" />
+                <marker date="1520388373130" expanded="true" signature="84:127" ph="{&quot;title&quot;: &quot;Shopping Control&quot;...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -36,10 +42,13 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/course/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="37" column="1" lean-forward="true" selection-start-line="37" selection-start-column="1" selection-end-line="37" selection-end-column="1" />
+            <state relative-caret-position="239">
+              <caret line="61" column="46" lean-forward="false" selection-start-line="61" selection-start-column="46" selection-end-line="61" selection-end-column="46" />
               <folding>
-                <element signature="n#!!doc" expanded="true" />
+                <marker date="1520615144279" expanded="true" signature="783:871" ph="..." />
+                <marker date="1520615144279" expanded="true" signature="788:794" ph="..." />
+                <marker date="1520615144279" expanded="true" signature="788:862" ph="..." />
+                <marker date="1520615144279" expanded="true" signature="879:1113" ph="..." />
               </folding>
             </state>
           </provider>
@@ -171,12 +180,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1520359998855</updated>
-      <workItem from="1520360000163" duration="10364000" />
+      <workItem from="1520360000163" duration="14465000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10364000" />
+    <option name="totallyTimeSpent" value="14465000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -215,25 +224,31 @@
     <entry file="file://$PROJECT_DIR$/course/js/config.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
-          <caret line="6" column="12" lean-forward="true" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
-          <folding />
+          <caret line="6" column="12" lean-forward="false" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
+          <folding>
+            <marker date="1520388373130" expanded="true" signature="66:304" ph="{...}" />
+            <marker date="1520388373130" expanded="true" signature="84:127" ph="{&quot;title&quot;: &quot;Shopping Control&quot;...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/course/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="19" column="12" lean-forward="false" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="12" />
+        <state relative-caret-position="460">
+          <caret line="26" column="33" lean-forward="true" selection-start-line="26" selection-start-column="33" selection-end-line="26" selection-end-column="33" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/course/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="37" column="1" lean-forward="true" selection-start-line="37" selection-start-column="1" selection-end-line="37" selection-end-column="1" />
+        <state relative-caret-position="239">
+          <caret line="61" column="46" lean-forward="false" selection-start-line="61" selection-start-column="46" selection-end-line="61" selection-end-column="46" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <marker date="1520615144279" expanded="true" signature="783:871" ph="..." />
+            <marker date="1520615144279" expanded="true" signature="788:794" ph="..." />
+            <marker date="1520615144279" expanded="true" signature="788:862" ph="..." />
+            <marker date="1520615144279" expanded="true" signature="879:1113" ph="..." />
           </folding>
         </state>
       </provider>

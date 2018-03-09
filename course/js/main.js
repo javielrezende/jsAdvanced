@@ -19,7 +19,16 @@ function getTotal(list) {
 function setList(list) {
     // Dentro desta variavel ira o cod html que estava na pagina
     // Foram qubradas as linhas para melhor leitura do codigo
-    var table = '<thead><tr><td>Description</td><td>Amount</td><td>Value</td><td>Action</td></tr></thead><tbody>';
+    // Usar crase ao invez de aspas faz com que possamos coocar o html normalmente sem concatenação (ES6)
+    var table = `<thead>
+<tr>
+<td>Description</td>
+<td>Amount</td>
+<td>Value</td>
+<td>Action</td>
+</tr>
+</thead>
+<tbody>`;
 
     for (var key in list) {
         table += '<tr><td>' + formatDesc(list[key].desc) + '</td><td>' + list[key].amount + '</td><td>' + formatValue(list[key].value) + '</td><td>Edit | Delete</td></tr>';
@@ -44,6 +53,19 @@ function formatValue(value) {
     str = str.replace(".", ","); // Aqui troca os pontos por virgula
     str = "$ " + str;
     return str;
+}
+
+// Funcao para adicionar novo registro
+function addData() {
+    // recebe as informacoes do formulario
+    var desc = document.getElementById("desc").value;
+    var amount = document.getElementById("amount").value;
+    var value = document.getElementById("value").value;
+
+    // unshift é utilizado para add os elementos no inicio do array e retorna o length
+    // Como nossa lista é um objeto temos que passar o objeto para dentro do metodo
+    list.unshift({"desc":desc, "amount":amount, "value":value});
+    setList(list); //Aqui chamamos o metodo que atualiza a lista
 }
 
 setList(list);
