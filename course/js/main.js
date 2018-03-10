@@ -12,7 +12,7 @@ function getTotal(list) {
         // incrementa o total com o valor multiplicado pela quantidade, de todos os produtos da lista
         total += list[key].value * list[key].amount;
     }
-    return total;
+    document.getElementById("totalValue").innerHTML = formatValue(total);
 }
 
 
@@ -36,6 +36,7 @@ function setList(list) {
 
     table += '</tbody>';
     document.getElementById("listTable").innerHTML = table;
+    getTotal(list);
 }
 
 // Funcao para formatar as descricao dos produtos
@@ -190,4 +191,3 @@ function validation() {
 }
 
 setList(list);
-console.log(getTotal(list));
