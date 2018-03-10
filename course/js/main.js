@@ -31,7 +31,7 @@ function setList(list) {
 <tbody>`;
 
     for (var key in list) {
-        table += '<tr><td>' + formatDesc(list[key].desc) + '</td><td>' + list[key].amount + '</td><td>' + formatValue(list[key].value) + '</td><td>Edit | Delete</td></tr>';
+        table += '<tr><td>' + formatDesc(list[key].desc) + '</td><td>' + list[key].amount + '</td><td>' + formatValue(list[key].value) + '</td><td><button class="btn btn-default" onclick="setUpdate(' + key + ');">Edit</button>Delete</td></tr>';
     }
 
     table += '</tbody>';
@@ -61,11 +61,29 @@ function addData() {
     var desc = document.getElementById("desc").value;
     var amount = document.getElementById("amount").value;
     var value = document.getElementById("value").value;
-
     // unshift é utilizado para add os elementos no inicio do array e retorna o length
     // Como nossa lista é um objeto temos que passar o objeto para dentro do metodo
-    list.unshift({"desc":desc, "amount":amount, "value":value});
+    list.unshift({"desc": desc, "amount": amount, "value": value});
     setList(list); //Aqui chamamos o metodo que atualiza a lista
+}
+
+// Funcao para editar algum registro
+function setUpdate(id) {
+    var obj = list[id]; // Aqui pegamos um registro. Se for o ultimo indice do array será o meat (carne)
+    document.getElementById("desc").value = obj.desc; // Aqui pegamos a informacao desc do objeto do array
+                                                      // selecionado e jogamos pro documento
+    document.getElementById("amount").value = obj.amount;
+    document.getElementById("value").value = obj.value;
+    document.getElementById("btnUpdate").style.display = "inline-block";
+    document.getElementById("btnAdd").style.display = "none";
+}
+
+function resetForm() {
+    document.getElementById("desc").value = "";
+    document.getElementById("amount").value = "";
+    document.getElementById("value").value = "";
+    document.getElementById("btnUpdate").style.display = "none";
+    document.getElementById("btnAdd").style.display = "inline-block";
 }
 
 setList(list);
