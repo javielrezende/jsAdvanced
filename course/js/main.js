@@ -37,6 +37,9 @@ function setList(list) {
     table += '</tbody>';
     document.getElementById("listTable").innerHTML = table;
     getTotal(list);
+
+    // Quando alguem setar nossa lista, sera salva no local storage
+    saveListStorage(list);
 }
 
 // Funcao para formatar as descricao dos produtos
@@ -199,4 +202,25 @@ function deleteList() {
     }
 }
 
-setList(list);
+// Salva nossa lista no local storage
+// Local storage aceita apenas string
+function saveListStorage(list) {
+    var jsonStr = JSON.stringify(list); // Funcao que transforma nossa lista(que esta num array)
+                                        // em json com formato string
+    // Aqui salvamos a nossa linsta no local storage
+    // o primeiro parametro colocamos o nome que desejamos
+    // o segundo passamos a lista no formato correto
+    localStorage.setItem("list", jsonStr);
+}
+
+// Funcao para inicializar nossa aplicacao com a lista do localStorage, caso esteja lá
+function initListStorage() {
+    var testList = localStorage.getItem("list"); // Aqui colocamos nossa lista do local storage em uma variavel
+    if(testList){ // Testamos se a lista está no local storage
+        list = JSON.parse(testList); // Se estiver, transformamos nossa lista que esta em
+                                     // json-string em array novamente
+    }
+    setList(list); //setamos nosso array
+}
+
+initListStorage()
