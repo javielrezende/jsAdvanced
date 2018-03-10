@@ -190,4 +190,13 @@ function validation() {
     }
 }
 
+// Funcao para deletar toda a lista da tela
+// Simplismente atribuimos um array vazio para a lista
+function deleteList() {
+    if(confirm("Delete this List?")){
+        list = [];
+        setList(list);
+    }
+}
+
 setList(list);
