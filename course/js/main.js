@@ -31,7 +31,7 @@ function setList(list) {
 <tbody>`;
 
     for (var key in list) {
-        table += '<tr><td>' + formatDesc(list[key].desc) + '</td><td>' + list[key].amount + '</td><td>' + formatValue(list[key].value) + '</td><td><button class="btn btn-default" onclick="setUpdate(' + key + ');">Edit</button>  <button class="btn btn-default" onclick="deleteData(' + key + ');">Delete</button></td></tr>';
+        table += '<tr><td>' + formatDesc(list[key].desc) + '</td><td>' + formatAmount(list[key].amount) + '</td><td>' + formatValue(list[key].value) + '</td><td><button class="btn btn-default" onclick="setUpdate(' + key + ');">Edit</button>  <button class="btn btn-default" onclick="deleteData(' + key + ');">Delete</button></td></tr>';
     }
 
     table += '</tbody>';
@@ -55,8 +55,17 @@ function formatValue(value) {
     return str;
 }
 
+// Funcao para formatar os valores
+function formatAmount(amount) {
+    return parseInt(amount);
+}
+
 // Funcao para adicionar novo registro
 function addData() {
+    // Se tivermos um erro de validacao
+    if (!validation()) {
+        return;
+    }
     // recebe as informacoes do formulario
     var desc = document.getElementById("desc").value;
     var amount = document.getElementById("amount").value;
@@ -79,7 +88,7 @@ function setUpdate(id) {
     // Aqui estamos colocando o valor do id deste método dentro de um input no formulario no html
     // da pagina index. Desta forma teremos disponivel o id para outros metodos
     // O input esta como hidden so para termos acesso ao valor da variavel
-    document.getElementById("inputIDUpdate").innerHTML = '<input id="idUpdate" type="hidden" value="'+id+'">';
+    document.getElementById("inputIDUpdate").innerHTML = '<input id="idUpdate" type="hidden" value="' + id + '">';
 }
 
 function resetForm() {
@@ -89,34 +98,41 @@ function resetForm() {
     document.getElementById("btnUpdate").style.display = "none";
     document.getElementById("btnAdd").style.display = "inline-block";
     document.getElementById("inputIDUpdate").innerHTML = "";
+    // Aqui faremos os erros desaparecerem ao ser resetado o formulario
+    document.getElementById("errors").style.display = "none";
+
 }
 
 // Aqui programamos a funcao para o botao salvar
 function updateData() {
+    // Se tivermos um erro de validacao
+    if (!validation()) {
+        return;
+    }
     var id = document.getElementById("idUpdate").value;
     var desc = document.getElementById("desc").value;
     var amount = document.getElementById("amount").value;
     var value = document.getElementById("value").value;
 
     // Aqui é a forma que salvamos as novas informações no objeto dentro do array
-    list[id] = {"desc": desc, "amount": amount, "value": value };
+    list[id] = {"desc": desc, "amount": amount, "value": value};
     resetForm();
     setList(list);
 }
 
 function deleteData(id) {
     // Funcao do javaScript que abre uma caixa para confirmação ou cancelamento da opcao
-    if(confirm("Delete this item?")){
+    if (confirm("Delete this item?")) {
         // Caso o registro a ser apagado seja o ultimo da lista
-        if(id === list.length - 1){
+        if (id === list.length - 1) {
             list.pop(); // Funcao que apaga o ultimo elemento do array
         }
         // Se for o primeiro elemento do array
-        else if(id === 0){
+        else if (id === 0) {
             list.shift(); // Funcao que apaga o primeiro elemento do array
         }
         // Se for outro elemento exceto o primeiro e o ultimo
-        else{
+        else {
             // O método slice vai pegar os dados do array
             // No caso abaixo pegará do primeiro(indice 0) até o anterior ao id(NÃO INCLUI O ID)
             var arrAuxIni = list.slice(0, id);
@@ -130,6 +146,46 @@ function deleteData(id) {
             list = arrAuxIni.concat(arrAuxEnd);
         }
         setList(list);
+    }
+}
+
+function validation() {
+    var desc = document.getElementById("desc").value;
+    var amount = document.getElementById("amount").value;
+    var value = document.getElementById("value").value;
+    var errors = "";
+    document.getElementById("errors").style.display = "none";
+
+    if (desc === "") {
+        errors += '<p>Fill out description</p>';
+    }
+    if (amount === "") {
+        errors += '<p>Fill out a quantity</p>';
+    } else if (amount != parseInt(amount)) {
+        errors += '<p>Fill out a valid amount</p>';
+    }
+    if (value === "") {
+        errors += '<p>Fill out a value</p>';
+    } else if (value != parseFloat(amount)) {
+        errors += '<p>Fill out a valid value</p>';
+    }
+
+    if (errors != "") {
+        // Aqui setamos para os erros aparecerem na tela, pois no html
+        // esta para bloquear por default
+        document.getElementById("errors").style.display = "block";
+
+        // Da forma abaixo manipulamos o css com o javasccript
+        document.getElementById("errors").style.backgroundColor = "rgba(85, 85, 85, 0.3)";
+        document.getElementById("errors").style.color = "white";
+        document.getElementById("errors").style.padding = "10px";
+        document.getElementById("errors").style.margin = "10px";
+        document.getElementById("errors").style.borderRadiusr = "13px";
+
+        document.getElementById("errors").innerHTML = "<h3>Error:</h3>" + errors;
+        return 0;
+    } else {
+        return 1;
     }
 }
 
