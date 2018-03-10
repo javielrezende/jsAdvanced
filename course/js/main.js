@@ -67,7 +67,7 @@ function addData() {
     setList(list); //Aqui chamamos o metodo que atualiza a lista
 }
 
-// Funcao para editar algum registro
+// Funcao para editar algum registro, coloca as informações nos campos do formulario
 function setUpdate(id) {
     var obj = list[id]; // Aqui pegamos um registro. Se for o ultimo indice do array será o meat (carne)
     document.getElementById("desc").value = obj.desc; // Aqui pegamos a informacao desc do objeto do array
@@ -76,6 +76,23 @@ function setUpdate(id) {
     document.getElementById("value").value = obj.value;
     document.getElementById("btnUpdate").style.display = "inline-block";
     document.getElementById("btnAdd").style.display = "none";
+    // Aqui estamos colocando o valor do id deste método dentro de um input no formulario no html
+    // da pagina index. Desta forma teremos disponivel o id para outros metodos
+    // O input esta como hidden so para termos acesso ao valor da variavel
+    document.getElementById("inputIDUpdate").innerHTML = '<input id="idUpdate" type="hidden" value="'+id+'">';
+}
+
+// Aqui programamos a funcao para o botao salvar
+function updateData() {
+    var id = document.getElementById("idUpdate").value;
+    var desc = document.getElementById("desc").value;
+    var amount = document.getElementById("amount").value;
+    var value = document.getElementById("value").value;
+
+    // Aqui é a forma que salvamos as novas informações no objeto dentro do array
+    list[id] = {"desc": desc, "amount": amount, "value": value };
+    resetForm();
+    setList(list);
 }
 
 function resetForm() {
@@ -84,6 +101,7 @@ function resetForm() {
     document.getElementById("value").value = "";
     document.getElementById("btnUpdate").style.display = "none";
     document.getElementById("btnAdd").style.display = "inline-block";
+    document.getElementById("inputIDUpdate").innerHTML = "";
 }
 
 setList(list);
