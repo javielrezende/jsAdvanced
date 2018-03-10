@@ -31,7 +31,7 @@ function setList(list) {
 <tbody>`;
 
     for (var key in list) {
-        table += '<tr><td>' + formatDesc(list[key].desc) + '</td><td>' + list[key].amount + '</td><td>' + formatValue(list[key].value) + '</td><td><button class="btn btn-default" onclick="setUpdate(' + key + ');">Edit</button>Delete</td></tr>';
+        table += '<tr><td>' + formatDesc(list[key].desc) + '</td><td>' + list[key].amount + '</td><td>' + formatValue(list[key].value) + '</td><td><button class="btn btn-default" onclick="setUpdate(' + key + ');">Edit</button>  <button class="btn btn-default" onclick="deleteData(' + key + ');">Delete</button></td></tr>';
     }
 
     table += '</tbody>';
@@ -82,6 +82,15 @@ function setUpdate(id) {
     document.getElementById("inputIDUpdate").innerHTML = '<input id="idUpdate" type="hidden" value="'+id+'">';
 }
 
+function resetForm() {
+    document.getElementById("desc").value = "";
+    document.getElementById("amount").value = "";
+    document.getElementById("value").value = "";
+    document.getElementById("btnUpdate").style.display = "none";
+    document.getElementById("btnAdd").style.display = "inline-block";
+    document.getElementById("inputIDUpdate").innerHTML = "";
+}
+
 // Aqui programamos a funcao para o botao salvar
 function updateData() {
     var id = document.getElementById("idUpdate").value;
@@ -95,13 +104,33 @@ function updateData() {
     setList(list);
 }
 
-function resetForm() {
-    document.getElementById("desc").value = "";
-    document.getElementById("amount").value = "";
-    document.getElementById("value").value = "";
-    document.getElementById("btnUpdate").style.display = "none";
-    document.getElementById("btnAdd").style.display = "inline-block";
-    document.getElementById("inputIDUpdate").innerHTML = "";
+function deleteData(id) {
+    // Funcao do javaScript que abre uma caixa para confirmação ou cancelamento da opcao
+    if(confirm("Delete this item?")){
+        // Caso o registro a ser apagado seja o ultimo da lista
+        if(id === list.length - 1){
+            list.pop(); // Funcao que apaga o ultimo elemento do array
+        }
+        // Se for o primeiro elemento do array
+        else if(id === 0){
+            list.shift(); // Funcao que apaga o primeiro elemento do array
+        }
+        // Se for outro elemento exceto o primeiro e o ultimo
+        else{
+            // O método slice vai pegar os dados do array
+            // No caso abaixo pegará do primeiro(indice 0) até o anterior ao id(NÃO INCLUI O ID)
+            var arrAuxIni = list.slice(0, id);
+            // No caso abaixo pegara do registro apos o id ate o fim
+            // É uma mãnha para nao colcar outro parametro, por exemplo list.slice(id + 1, list.length)...
+            var arrAuxEnd = list.slice(id + 1);
+
+            // Agora so precisamos concatenar as duas variaveis, pois
+            // a primeira tem os registros ate o id
+            // e a ultimo tem os registros apos o id
+            list = arrAuxIni.concat(arrAuxEnd);
+        }
+        setList(list);
+    }
 }
 
 setList(list);
